@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Contact Us - Ads in One Place{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Contact Us</h1>
+        <p class="lead">Let's discuss how we can help grow your business</p>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-8 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="mb-4">Send Us a Message</h3>
+                        {% crispy form %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Get in Touch</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="fas fa-envelope text-primary me-2"></i>
+                                <a href="mailto:info@adsinoneplace.com" class="text-decoration-none">info@adsinoneplace.com</a>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-phone text-primary me-2"></i>
+                                <a href="tel:+15551234567" class="text-decoration-none">(555) 123-4567</a>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                Ventura County, CA
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">Business Hours</h5>
+                        <p class="mb-2"><strong>Monday - Friday</strong><br>9:00 AM - 6:00 PM PST</p>
+                        <p class="mb-0"><strong>Weekend</strong><br>By Appointment</p>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm mt-4 bg-primary text-white">
+                    <div class="card-body text-center">
+                        <h5>Follow Us</h5>
+                        <div class="social-links mt-3">
+                            <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                            <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+                            <a href="#" class="text-white"><i class="fab fa-instagram fa-2x"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h3 class="text-center mb-5">Frequently Asked Questions</h3>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <h5><i class="fas fa-question-circle text-primary me-2"></i>How quickly can we get started?</h5>
+                <p>We can typically have your first campaigns live within 5-7 business days after our initial consultation and strategy approval.</p>
+            </div>
+            <div class="col-md-6 mb-4">
+                <h5><i class="fas fa-question-circle text-primary me-2"></i>What's your minimum budget?</h5>
+                <p>We work with businesses of all sizes. Our minimum ad spend starts at $1,000/month, but we can discuss custom arrangements.</p>
+            </div>
+            <div class="col-md-6 mb-4">
+                <h5><i class="fas fa-question-circle text-primary me-2"></i>Do you offer reporting?</h5>
+                <p>Yes! You'll receive detailed performance reports and have 24/7 access to your campaign dashboard.</p>
+            </div>
+            <div class="col-md-6 mb-4">
+                <h5><i class="fas fa-question-circle text-primary me-2"></i>What platforms do you manage?</h5>
+                <p>We manage Facebook, Instagram, Google, YouTube, TikTok, Snapchat, CTV/OTT, display networks, and more.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

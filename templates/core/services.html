@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Services - Ads in One Place{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Our Services</h1>
+        <p class="lead">Comprehensive digital marketing solutions for every platform</p>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm service-card">
+                    <div class="card-body text-center p-4">
+                        <i class="{{ service.icon }} fa-4x text-primary mb-3"></i>
+                        <h4 class="card-title">{{ service.name }}</h4>
+                        <p class="card-text">{{ service.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">How We Work</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="display-6 fw-bold">1</span>
+                    </div>
+                    <h4>Discovery Call</h4>
+                    <p>We learn about your business, goals, and target audience</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="display-6 fw-bold">2</span>
+                    </div>
+                    <h4>Custom Strategy</h4>
+                    <p>We create a tailored campaign plan with budget and timeline</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <span class="display-6 fw-bold">3</span>
+                    </div>
+                    <h4>Launch & Optimize</h4>
+                    <p>We execute, monitor, and continuously improve your campaigns</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing CTA -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2>Custom Solutions for Every Budget</h2>
+                <p class="lead">We work with businesses of all sizes. Whether you're a startup or established enterprise, we can create a package that fits your needs and budget.</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <a href="{% url 'contact:contact' %}" class="btn btn-primary btn-lg">Request a Quote</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.service-card {
+    transition: transform 0.3s;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+}
+</style>
+{% endblock %}

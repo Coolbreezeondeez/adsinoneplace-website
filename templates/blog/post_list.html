@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog - Ads in One Place{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Digital Marketing Blog</h1>
+        <p class="lead">Tips, trends, and insights from industry experts</p>
+    </div>
+</section>
+
+<!-- Blog Posts -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                {% if page_obj %}
+                <div class="row g-4">
+                    {% for post in page_obj %}
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            {% if post.featured_image %}
+                            <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <i class="fas fa-newspaper fa-4x text-white opacity-50"></i>
+                            </div>
+                            {% endif %}
+                            <div class="card-body">
+                                {% if post.category %}
+                                <span class="badge bg-primary mb-2">{{ post.category.name }}</span>
+                                {% endif %}
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <p class="card-text">{{ post.excerpt }}</p>
+                                <a href="{{ post.get_absolute_url }}" class="btn btn-outline-primary">Read More</a>
+                            </div>
+                            <div class="card-footer text-muted small">
+                                <i class="fas fa-calendar me-1"></i>{{ post.published_at|date:"M d, Y" }}
+                                <span class="ms-3"><i class="fas fa-user me-1"></i>{{ post.author.get_full_name|default:post.author.username }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Pagination -->
+                {% if page_obj.has_other_pages %}
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        </li>
+                        {% endif %}
+                        
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                            {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+                {% else %}
+                <div class="alert alert-info">
+                    <h4>No blog posts yet!</h4>
+                    <p>Check back soon for digital marketing insights and tips.</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Categories -->
+                {% if categories %}
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Categories</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <a href="{% url 'blog:post_list' %}" class="text-decoration-none">All Posts</a>
+                            </li>
+                            {% for category in categories %}
+                            <li class="mb-2">
+                                <a href="{% url 'blog:post_list' %}?category={{ category.slug }}" class="text-decoration-none">
+                                    {{ category.name }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Call to Action -->
+                <div class="card shadow-sm bg-primary text-white">
+                    <div class="card-body text-center">
+                        <h5>Need Help with Digital Marketing?</h5>
+                        <p>Let's discuss your project</p>
+                        <a href="{% url 'contact:contact' %}" class="btn btn-light">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

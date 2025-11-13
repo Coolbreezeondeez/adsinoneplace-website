@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - Ads in One Place{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">About Us</h1>
+        <p class="lead">Your partner in digital marketing success</p>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <h2 class="mb-4">Who We Are</h2>
+                <p class="lead">Ads in One Place is a full-service digital marketing agency specializing in multi-platform advertising campaigns.</p>
+                <p>We bring together expertise across all major digital advertising platforms under one roof. Whether you need Facebook ads, Google campaigns, TikTok marketing, or CTV/OTT placement, we handle it all.</p>
+                <p>Our mission is simple: help businesses grow through data-driven, results-focused digital advertising. We believe in transparency, measurable results, and building long-term partnerships with our clients.</p>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="bg-light p-5 rounded">
+                    <i class="fas fa-award fa-4x text-primary mb-3"></i>
+                    <h3>Our Expertise</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Meta/Facebook Certified</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Google Ads Certified</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>TikTok Marketing Partner</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>CTV/OTT Specialists</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Analytics & Data Experts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Approach -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Approach</h2>
+        <div class="row g-4">
+            <div class="col-md-3 text-center">
+                <div class="bg-white p-4 rounded shadow-sm h-100">
+                    <div class="mb-3 text-primary">
+                        <i class="fas fa-search fa-3x"></i>
+                    </div>
+                    <h4>1. Research</h4>
+                    <p>Deep dive into your business, audience, and competition</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="bg-white p-4 rounded shadow-sm h-100">
+                    <div class="mb-3 text-primary">
+                        <i class="fas fa-lightbulb fa-3x"></i>
+                    </div>
+                    <h4>2. Strategy</h4>
+                    <p>Create custom campaigns tailored to your goals</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="bg-white p-4 rounded shadow-sm h-100">
+                    <div class="mb-3 text-primary">
+                        <i class="fas fa-cogs fa-3x"></i>
+                    </div>
+                    <h4>3. Execute</h4>
+                    <p>Launch and optimize across all platforms</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="bg-white p-4 rounded shadow-sm h-100">
+                    <div class="mb-3 text-primary">
+                        <i class="fas fa-chart-bar fa-3x"></i>
+                    </div>
+                    <h4>4. Analyze</h4>
+                    <p>Track, report, and continuously improve results</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready to Work Together?</h2>
+        <p class="lead mb-4">Let's discuss how we can help grow your business.</p>
+        <a href="{% url 'contact:contact' %}" class="btn btn-primary btn-lg">Get in Touch</a>
+    </div>
+</section>
+{% endblock %}

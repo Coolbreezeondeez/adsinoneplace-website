@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }} - Ads in One Place{% endblock %}
+
+{% block content %}
+<!-- Post Header -->
+<section class="bg-light py-5">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'blog:post_list' %}">Blog</a></li>
+                <li class="breadcrumb-item active">{{ post.title }}</li>
+            </ol>
+        </nav>
+        
+        {% if post.category %}
+        <span class="badge bg-primary mb-3">{{ post.category.name }}</span>
+        {% endif %}
+        
+        <h1 class="display-5 fw-bold">{{ post.title }}</h1>
+        
+        <div class="text-muted mt-3">
+            <i class="fas fa-calendar me-2"></i>{{ post.published_at|date:"F d, Y" }}
+            <span class="ms-4"><i class="fas fa-user me-2"></i>{{ post.author.get_full_name|default:post.author.username }}</span>
+        </div>
+    </div>
+</section>
+
+<!-- Post Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                {% if post.featured_image %}
+                <img src="{{ post.featured_image.url }}" class="img-fluid rounded mb-4" alt="{{ post.title }}">
+                {% endif %}
+                
+                <div class="post-content">
+                    {{ post.content|safe }}
+                </div>
+                
+                <hr class="my-5">
+                
+                <div class="text-center">
+                    <h4>Enjoyed this article?</h4>
+                    <p>Let's discuss how we can help your business grow.</p>
+                    <a href="{% url 'contact:contact' %}" class="btn btn-primary">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Posts -->
+{% if related_posts %}
+<section class="bg-light py-5">
+    <div class="container">
+        <h3 class="mb-4">Related Articles</h3>
+        <div class="row g-4">
+            {% for related in related_posts %}
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    {% if related.featured_image %}
+                    <img src="{{ related.featured_image.url }}" class="card-img-top" alt="{{ related.title }}" style="height: 150px; object-fit: cover;">
+                    {% else %}
+                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 150px;">
+                        <i class="fas fa-newspaper fa-3x text-white opacity-50"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h6 class="card-title">{{ related.title }}</h6>
+                        <a href="{{ related.get_absolute_url }}" class="btn btn-sm btn-outline-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.post-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+.post-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+</style>
+{% endblock %}
