@@ -49,8 +49,8 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #618b9d;
-    border-color: #d5e4d9;
+    background-color: #26637e;
+    border-color: #1b4557;
     transform: translateY(-2px);
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
