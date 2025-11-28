@@ -32,11 +32,11 @@
                             {% endif %}
                             <div class="card-body">
                                 {% if post.category %}
-                                <span class="badge bg-primary mb-2">{{ post.category.name }}</span>
+                                <span class="badge mb-2" style="background-color: #1b4557;">{{ post.category.name }}</span>
                                 {% endif %}
                                 <h5 class="card-title">{{ post.title }}</h5>
                                 <p class="card-text">{{ post.excerpt }}</p>
-                                <a href="{{ post.get_absolute_url }}" class="btn btn-outline-primary">Read More</a>
+                                <a href="{{ post.get_absolute_url }}" class="btn" style="color: #1b4557; border-color: #1b4557;">Read More</a>
                             </div>
                             <div class="card-footer text-muted small">
                                 <i class="fas fa-calendar me-1"></i>{{ post.published_at|date:"M d, Y" }}
@@ -86,7 +86,7 @@
                 <!-- Categories -->
                 {% if categories %}
                 <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header text-white" style="background-color: #1b4557;">
                         <h5 class="mb-0">Categories</h5>
                     </div>
                     <div class="card-body">
@@ -107,7 +107,7 @@
                 {% endif %}
 
                 <!-- Call to Action -->
-                <div class="card shadow-sm bg-primary text-white">
+                <div class="card shadow-sm text-white" style="background-color: #1b4557;">
                     <div class="card-body text-center">
                         <h5>Need Help with Digital Marketing?</h5>
                         <p>Let's discuss your project</p>
