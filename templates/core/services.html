@@ -1,96 +1,370 @@
 {% extends 'base.html' %}
-
 {% load static %}
-{% block meta_description %}Complete digital advertising services: Facebook/Instagram ads, Google Ads, TikTok marketing, CTV/OTT, display advertising, and analytics. Transparent pricing and real results.{% endblock %}
+
 {% block title %}Our Services - Ads in One Place{% endblock %}
+
+{% block meta_description %}Complete digital advertising services: Facebook/Instagram ads, Google Ads, TikTok marketing, CTV/OTT, display advertising, and analytics. Transparent pricing and real results.{% endblock %}
 
 {% block content %}
 <!-- Page Header -->
 <section class="text-white py-5" style="background-color: #1b4557;">
     <div class="container">
         <h1 class="display-4 fw-bold">Our Services</h1>
-        <p class="lead">Comprehensive digital marketing solutions for every platform</p>
+        <p class="lead">Complete digital advertising solutions for every stage of your marketing funnel</p>
     </div>
 </section>
 
 <!-- Services Grid -->
 <section class="py-5">
     <div class="container">
-        <div class="row g-4">
-            {% for service in services %}
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm service-card">
-                    <div class="card-body text-center p-4">
-                        <i class="{{ service.icon }} fa-4x text-primary mb-3"></i>
-                        <h4 class="card-title">{{ service.name }}</h4>
-                        <p class="card-text">{{ service.description }}</p>
+        <!-- Core Platform Services -->
+        <div class="mb-5">
+            <h2 class="mb-4 text-center" style="color: #1b4557;">Core Advertising Platforms</h2>
+            <div class="row g-4">
+                
+                <!-- Meta (Facebook & Instagram) -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fab fa-facebook fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">Meta (Facebook & Instagram)</h4>
+                            </div>
+                            <p class="card-text">Reach two-thirds of all Americans over 13 with highly targeted image and video ads across Meta's popular platforms.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> 87% of Instagram users take action after seeing product ads</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> High click-through and conversion rates</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Target by goal, geography, demographics, and interests</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Ads (SEM/PPC) -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fab fa-google fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">Google Ads (SEM/PPC)</h4>
+                            </div>
+                            <p class="card-text">Get your brand where consumers go when looking for solutions: search engines. Appear on Google search results pages.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> 88% of consumers use search to find local businesses</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> 61% who visit after local search make a purchase</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Strategic keyword targeting for maximum ROI</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- YouTube -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fab fa-youtube fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">YouTube Advertising</h4>
+                            </div>
+                            <p class="card-text">Reach engaged audiences on the world's second most popular website and search engine with video ads across any device.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Viewers 2X more likely to buy what they see</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Pay only for completed views</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Highly customizable audience targeting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TikTok & Snapchat -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fab fa-tiktok fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">TikTok & Snapchat</h4>
+                            </div>
+                            <p class="card-text">Reach highly engaged audiences with short-form video ads on the platforms used by 90% of millennials and Gen Z.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Massive reach among younger demographics</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Build brand awareness or promote products</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Target by geography, demographics, interests, and behaviors</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LinkedIn -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fab fa-linkedin fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">LinkedIn Advertising</h4>
+                            </div>
+                            <p class="card-text">Find professionals on the world's largest professional network with 750+ million members and highly customizable targeting.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Drive awareness, leads, and web traffic</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Target by company, job title, and experience</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Perfect for B2B marketing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email Marketing -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-envelope fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">Email Marketing</h4>
+                            </div>
+                            <p class="card-text">Integrate this highly effective channel into your campaigns with an average $42 return for every dollar spent.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> 78% of companies saw increased engagement</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> 100% bot-free and spam-compliant platform</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Hypertargeting for better results</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Video & Streaming Services -->
+        <div class="mb-5">
+            <h2 class="mb-4 text-center" style="color: #1b4557;">Video & Streaming Advertising</h2>
+            <div class="row g-4">
+                
+                <!-- CTV (Connected TV) -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-tv fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">CTV (Connected TV)</h4>
+                            </div>
+                            <p class="card-text">Reach audiences watching premium streaming content on connected TVs and devices like Roku and Fire TV Stick.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Reaches 80% of American viewers</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> 95% completion rate</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Targeted, affordable, and measurable</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OTT (Over-the-Top) -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-film fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">OTT (Over-the-Top)</h4>
+                            </div>
+                            <p class="card-text">Combine video engagement with the broad reach of streaming into American households with unskippable 15- or 30-second ads.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> 98% of consumers subscribe to at least one OTT platform</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Unskippable ad placement</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Serves before, during, and after content</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pre-Roll Video -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-video fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">Pre-Roll Video</h4>
+                            </div>
+                            <p class="card-text">15- or 30-second ads that play before, during, or after premium content across mobile devices, computers, and tablets.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> 66% prefer watching to reading about products</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Audience targeting increases engagement</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Cross-device delivery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Streaming Audio -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-headphones fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">Streaming Audio</h4>
+                            </div>
+                            <p class="card-text">15- or 30-second ads on third-party podcasts and digital music platforms like Spotify and Pandora.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Reaches 70% of Americans 12+ weekly</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Premium inventory placement</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Target by geography and demographics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Display & Geofencing Services -->
+        <div class="mb-5">
+            <h2 class="mb-4 text-center" style="color: #1b4557;">Display & Location-Based Advertising</h2>
+            <div class="row g-4">
+                
+                <!-- Display Advertising -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-desktop fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">Display Advertising</h4>
+                            </div>
+                            <p class="card-text">Consistently reach qualified audiences with static or animated banner ads in various sizes shown across all devices.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Highly targeted and affordable</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Target by geography, demographics, and interests</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Cross-device delivery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Geofencing -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-map-marker-alt fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">Geofencing</h4>
+                            </div>
+                            <p class="card-text">Create a virtual "fence" around physical locations to reach consumers who are in a position to make an immediate purchase.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Up to 20X more effective than display ads</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Precision targeting by location</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Ideal for events, businesses, or competitor locations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Geofencing -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-video fa-2x me-3" style="color: #1b4557;"></i>
+                                <h4 class="mb-0">Video Geofencing</h4>
+                            </div>
+                            <p class="card-text">Combine high engagement of video with precision targeting of geofencing to reach audiences inside a virtual "fence".</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Serves video ads to mobile devices with location services</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> High engagement and action-driving</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Perfect for events and local targeting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Analytics & Reporting -->
+        <div class="mb-5">
+            <h2 class="mb-4 text-center" style="color: #1b4557;">Analytics & Reporting</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm border-0" style="background: linear-gradient(135deg, #1b4557 0%, #2a5f7a 100%);">
+                        <div class="card-body text-white p-5">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-chart-line fa-4x mb-3"></i>
+                                <h3>Real-Time Analytics & Dashboards</h3>
+                            </div>
+                            <p class="lead text-center mb-4">Get complete transparency into your campaigns with live, interactive dashboards that show exactly where your money is going and what results you're getting.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Real-time performance tracking</li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Custom reporting for every platform</li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Geographic and demographic breakdowns</li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2"></i> ROI and conversion tracking</li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2"></i> 24/7 dashboard access</li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-light btn-lg">View Interactive Demo Dashboard</a>
+                                <p class="small mt-2 mb-0 opacity-75">See how our real-time reporting works</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
+
+        <!-- Specialized Services -->
+        <div class="mb-5">
+            <h2 class="mb-4 text-center" style="color: #1b4557;">Specialized Campaign Services</h2>
+            <p class="text-center text-muted mb-4">We handle restricted categories with full legal compliance and specialized targeting</p>
+            <div class="row g-4">
+                
+                <!-- Cannabis & CBD -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #1b4557;"><i class="fas fa-leaf me-2"></i>Cannabis & CBD</h5>
+                            <p class="card-text small">CBD products and cannabis advertising in legal markets. Sales projected at $50B+ this year.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Federally compliant CBD advertising</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> State-legal cannabis campaigns</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Full regulatory compliance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gambling & Casinos -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #1b4557;"><i class="fas fa-dice me-2"></i>Gambling & Casinos</h5>
+                            <p class="card-text small">Online gambling and casino advertising with state-specific compliance and highly effective geofencing.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> State-by-state regulation compliance</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Precision geofencing for casinos</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Highly trackable campaigns</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Political Advertising -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #1b4557;"><i class="fas fa-flag-usa me-2"></i>Political Campaigns</h5>
+                            <p class="card-text small">Digital-first political advertising across CTV, streaming, and geofencing to reach voters effectively.</p>
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> CTV targeting (60% of households)</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Voter geofencing strategies</li>
+                                <li><i class="fas fa-check" style="color: #1b4557;"></i> Record-breaking ad spend opportunities</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="text-center py-5" style="background-color: #f8f9fa; border-radius: 10px;">
+            <h2 class="mb-4" style="color: #1b4557;">Ready to Get Started?</h2>
+            <p class="lead mb-4">Let's build a custom advertising strategy for your business.</p>
+            <a href="{% url 'contact:contact' %}" class="btn btn-lg text-white" style="background-color: #1b4557;">Get a Free Consultation</a>
+        </div>
+
     </div>
 </section>
-
-<!-- Process Section -->
-<section class="text-white py-5" style="background-color: #1b4557;">
-    <div class="container">
-        <h2 class="text-center mb-5">How We Work</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="text-center">
-                    <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                        <span class="display-6 fw-bold">1</span>
-                    </div>
-                    <h4>Discovery Call</h4>
-                    <p>We learn about your business, goals, and target audience</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="text-center">
-                    <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                        <span class="display-6 fw-bold">2</span>
-                    </div>
-                    <h4>Custom Strategy</h4>
-                    <p>We create a tailored campaign plan with budget and timeline</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="text-center">
-                    <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
-                        <span class="display-6 fw-bold">3</span>
-                    </div>
-                    <h4>Launch & Optimize</h4>
-                    <p>We execute, monitor, and continuously improve your campaigns</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Pricing CTA -->
-<section class="py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-8">
-                <h2>Custom Solutions for Every Budget</h2>
-                <p class="lead">We work with businesses of all sizes. Whether you're a startup or established enterprise, we can create a package that fits your needs and budget.</p>
-            </div>
-            <div class="col-lg-4 text-center">
-                <a href="{% url 'contact:contact' %}" class="btn btn-primary btn-lg">Request a Quote</a>
-            </div>
-        </div>
-    </div>
-</section>
-{% endblock %}
-
-{% block extra_css %}
-<style>
-.service-card {
-    transition: transform 0.3s;
-}
-.service-card:hover {
-    transform: translateY(-5px);
-}
-</style>
 {% endblock %}
