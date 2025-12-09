@@ -33,7 +33,7 @@ def contact(request):
                     subject,
                     message,
                     settings.DEFAULT_FROM_EMAIL if hasattr(settings, 'DEFAULT_FROM_EMAIL') else 'noreply@adagency.com',
-                    ['admin@adagency.com'],  # Replace with your email
+                    ['bbrucker@cbcbconnect.com'],  # Replace with your email
                     fail_silently=False,
                 )
             except Exception as e:
