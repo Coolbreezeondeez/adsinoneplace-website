@@ -27,7 +27,7 @@ urlpatterns = [
     path('services/', core_views.services, name='services'),
     path('blog/', include('blog.urls')),
     path('contact/', include('contact.urls')),
-    path('demo/', views.demo_dashboard, name='demo_dashboard'),
+    path('demo/', core_views.demo_dashboard, name='demo_dashboard'),
 ]
 
 # Serve media files in development
