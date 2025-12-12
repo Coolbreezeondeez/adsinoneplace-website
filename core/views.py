@@ -56,3 +56,5 @@ def services(request):
         'services': services_list,
     }
     return render(request, 'core/services.html', context)
+def demo_dashboard(request):
+    return render(request, 'core/demo_dashboard.html')
