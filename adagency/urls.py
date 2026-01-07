@@ -18,33 +18,35 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from core import views as core_views
 from django.contrib.sitemaps.views import sitemap
-from blog.sitemaps import BlogSitemap 
+from core import views as core_views
 
-# Define the sitemap dictionary
+# THIS IS THE KEY CHANGE:
+# We are importing from the new file 'feeds.py' instead of 'sitemaps.py'
+from blog.feeds import BlogSitemap 
+
 sitemaps = {
     'blog': BlogSitemap,
 }
 
-# ONE single list for everything
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+
     # Core pages
     path('', core_views.home, name='home'),
     path('about/', core_views.about, name='about'),
     path('services/', core_views.services, name='services'),
     path('demo/', core_views.demo_dashboard, name='demo_dashboard'),
-    
+
     # App includes
     path('blog/', include('blog.urls')),
     path('contact/', include('contact.urls')),
 
-    # The Sitemap (Moved inside here!)
+    # The Sitemap path
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 # This is needed for images to load if you are in DEBUG mode
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
