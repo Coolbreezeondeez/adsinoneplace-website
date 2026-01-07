@@ -14,4 +14,4 @@ class BlogSitemap(Sitemap):
 
     def lastmod(self, obj):
         # This tells Google when the post was last updated
-        return obj.updated_on
+        return obj.updated_at
