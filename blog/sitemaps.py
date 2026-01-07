@@ -10,7 +10,7 @@ class BlogSitemap(Sitemap):
     def items(self):
         # This returns all posts. 
         # If you have a 'status' field, use: Post.objects.filter(status='published')
-        return Post.objects.all().order_by('-created_on')
+        return Post.objects.all().order_by('-created_at')
 
     def lastmod(self, obj):
         # This tells Google when the post was last updated
