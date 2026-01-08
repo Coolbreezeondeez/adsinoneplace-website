@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-k09wt3$1lkv#i5(pmnur3ssbcq^fcd$rv!&k$$=q08%lflkjnz
 # SECURITY WARNING: don't run with debug turned on in production!
 import os
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,18 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'django.contrib.sites',    
+    'django.contrib.sitemaps',    
     # Custom apps
     'core',
     'blog',
-    'contact',
-    
+    'contact',    
     # Third party apps
     'crispy_forms',
     'crispy_bootstrap5',
     'ckeditor',
 ]
-
+SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
