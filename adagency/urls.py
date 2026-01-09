@@ -31,22 +31,21 @@ sitemaps = {
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     # Core pages
     path('', core_views.home, name='home'),
     path('about/', core_views.about, name='about'),
     path('services/', core_views.services, name='services'),
     path('demo/', core_views.demo_dashboard, name='demo_dashboard'),
-
     # App includes
     path('blog/', include('blog.urls')),
     path('contact/', include('contact.urls')),
-
     # The Sitemap path
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
-# This is needed for images to load if you are in DEBUG mode
+# Serve media files in all environments (needed for persistent disk on Render)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Keep static files only in DEBUG mode
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
