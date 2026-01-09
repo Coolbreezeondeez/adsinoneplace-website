@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.views.static import serve as static_serve
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -32,6 +33,7 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Core pages
+    path('media/<path:path>', static_serve, {'document_root': settings.MEDIA_ROOT}),
     path('', core_views.home, name='home'),
     path('about/', core_views.about, name='about'),
     path('services/', core_views.services, name='services'),
@@ -44,7 +46,6 @@ urlpatterns = [
 ]
 
 # Serve media files in all environments (needed for persistent disk on Render)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # Keep static files only in DEBUG mode
 if settings.DEBUG:
