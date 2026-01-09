@@ -15,15 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.views.static import serve as static_serve
+from django.views.decorators.cache import cache_control  # ADD THIS LINE
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from core import views as core_views
-
-# THIS IS THE KEY CHANGE:
-# We are importing from the new file 'feeds.py' instead of 'sitemaps.py'
 from blog.feeds import BlogSitemap 
 
 sitemaps = {
@@ -33,7 +31,10 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Core pages
-    path('media/<path:path>', static_serve, {'document_root': settings.MEDIA_ROOT}),
+    # REPLACE the old media path with this version that has caching:
+    path('media/<path:path>', 
+         cache_control(max_age=31536000, public=True, immutable=True)(static_serve), 
+         {'document_root': settings.MEDIA_ROOT}),
     path('', core_views.home, name='home'),
     path('about/', core_views.about, name='about'),
     path('services/', core_views.services, name='services'),
@@ -44,8 +45,6 @@ urlpatterns = [
     # The Sitemap path
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
-
-# Serve media files in all environments (needed for persistent disk on Render)
 
 # Keep static files only in DEBUG mode
 if settings.DEBUG:
