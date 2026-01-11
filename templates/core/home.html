@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block content %}
-<!-- Hero Section -->
 <section class="hero text-white py-5">
     <div class="hero-overlay"></div>
     <div class="container hero-content">
@@ -18,22 +17,22 @@
             <div class="col-lg-6 col-12 order-1 order-lg-2 mb-4 mb-lg-0">
                 <div class="text-center">
                     <lottie-player 
-    class="hero-lottie"
-    src="{% static 'animations/hero-animation.json' %}" 
-    background="transparent" 
-    speed="1" 
-    fetchpriority="high"
-    style="width: 100%; max-width: 500px; aspect-ratio: 1 / 1; margin: 0 auto; display: block;" 
-    loop 
-    autoplay>
-</lottie-player>
+                        class="hero-lottie"
+                        src="{% static 'animations/hero-animation.json' %}" 
+                        background="transparent" 
+                        speed="1" 
+                        fetchpriority="high"
+                        crossorigin="anonymous"
+                        style="width: 100%; max-width: 500px; aspect-ratio: 1 / 1; margin: 0 auto; display: block;" 
+                        loop 
+                        autoplay>
+                    </lottie-player>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Services Preview -->
 <section class="py-5">
     <div class="container">
         <div class="text-center mb-5">
@@ -75,7 +74,6 @@
     </div>
 </section>
 
-<!-- Why Choose Us -->
 <section class="bg-light py-5">
     <div class="container">
         <div class="text-center mb-5">
@@ -106,7 +104,6 @@
     </div>
 </section>
 
-<!-- Recent Blog Posts -->
 {% if latest_posts %}
 <section class="py-5">
     <div class="container">
@@ -144,7 +141,6 @@
 </section>
 {% endif %}
 
-<!-- Call to Action -->
 <section class="text-white py-5" style="background-color: #1b4557;">
     <div class="container text-center">
         <h2 class="display-5 fw-bold mb-4">Spending Too Much Time on Ad Management?</h2>
