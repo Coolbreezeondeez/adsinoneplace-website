@@ -7,11 +7,10 @@
     <title>{% block title %}Ads in One Place - Digital Marketing Agency{% endblock %}</title>
     <meta name="description" content="{% block meta_description %}Full-service digital marketing agency. Transparent, data-driven campaigns.{% endblock %}">
     
-    <link rel="preload" as="image" href="{% static 'images/hero-poster.webp' %}" fetchpriority="high">
-    <link rel="preload" as="fetch" href="{% static 'animations/hero-animation.json' %}" crossorigin="anonymous">
+    <link rel="preload" href="{% static 'images/hero-poster.webp' %}" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="{% static 'animations/hero-animation.json' %}" as="fetch" type="application/json" crossorigin="anonymous">
 
     <style>
-        /* This reserves the 1:1 square space and shows the image immediately */
         .hero-lottie {
             background-image: url("{% static 'images/hero-poster.webp' %}");
             background-size: contain;
@@ -19,18 +18,18 @@
             background-position: center;
             width: 100%;
             max-width: 500px;
-            aspect-ratio: 1 / 1; /* Fixes CLS Score */
+            aspect-ratio: 1 / 1; /* Eliminates Layout Shift (CLS) */
             margin: 0 auto;
             display: block;
         }
+        /* Optional: Ensures text stays white while background is loading */
+        .hero { background-color: #000; min-height: 500px; }
     </style>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
     {% block extra_css %}{% endblock %}
 
