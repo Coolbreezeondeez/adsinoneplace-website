@@ -14,37 +14,38 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.views.static import serve as static_serve
+from django.views.decorators.cache import cache_control  # ADD THIS LINE
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from core import views as core_views
 from django.contrib.sitemaps.views import sitemap
-from blog.sitemaps import BlogSitemap 
+from core import views as core_views
+from blog.feeds import BlogSitemap 
 
-# Define the sitemap dictionary
 sitemaps = {
     'blog': BlogSitemap,
 }
 
-# ONE single list for everything
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
     # Core pages
+    # REPLACE the old media path with this version that has caching:
+    path('media/<path:path>', 
+         cache_control(max_age=31536000, public=True, immutable=True)(static_serve), 
+         {'document_root': settings.MEDIA_ROOT}),
     path('', core_views.home, name='home'),
     path('about/', core_views.about, name='about'),
     path('services/', core_views.services, name='services'),
     path('demo/', core_views.demo_dashboard, name='demo_dashboard'),
-    
     # App includes
     path('blog/', include('blog.urls')),
     path('contact/', include('contact.urls')),
-
-    # The Sitemap (Moved inside here!)
+    # The Sitemap path
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
-# This is needed for images to load if you are in DEBUG mode
+# Keep static files only in DEBUG mode
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

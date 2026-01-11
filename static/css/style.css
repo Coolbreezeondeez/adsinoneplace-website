@@ -25,6 +25,10 @@ body {
     background: linear-gradient(135deg, #6f97a8 0%, #1b4557 100%);
 }.hero {
     background-image: url('../images/northern_lights.jpg');
+    background-image: image-set(
+        url('../images/northern_lights.webp') type('image/webp'),
+        url('../images/northern_lights.jpg') type('image/jpeg')
+    );
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
