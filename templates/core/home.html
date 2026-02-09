@@ -26,6 +26,11 @@
         border-color: #fff;
         color: #fff;
     }
+    
+    /* Ensure the poster covers the area perfectly */
+    #hero-poster {
+        transition: opacity 0.3s ease;
+    }
 </style>
 {% endblock %}
 
@@ -50,7 +55,8 @@
             </div>
             
             <div class="col-lg-6 col-12 order-1 order-lg-2 mb-4 mb-lg-0">
-                <div class="text-center" style="position: relative; min-height: 300px;">
+                <div class="text-center" style="position: relative; min-height: 300px; display: flex; justify-content: center; align-items: center;">
+                    
                     <img 
                         id="hero-poster"
                         src="{% static 'images/hero-poster.webp' %}" 
@@ -58,173 +64,79 @@
                         width="500" 
                         height="500"
                         fetchpriority="high"
-                        style="width: 100%; max-width: 500px; height: auto; display: block; margin: 0 auto;"
+                        decoding="async"
+                        style="width: 100%; max-width: 500px; height: auto; display: block;"
                     >
 
-                    <div id="lottie-container"></div>
+                    <div id="lottie-container" style="position: absolute; top: 0; left: 0; right: 0; width: 100%; height: 100%; pointer-events: none;"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold">Our Digital Marketing Services</h2>
-            <p class="lead text-muted">Comprehensive solutions for every platform</p>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fab fa-facebook-square fa-4x text-primary mb-3"></i>
-                        <h4>Social Media Ads</h4>
-                        <p>Facebook, Instagram, TikTok, Snapchat - reach your audience where they spend their time.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fab fa-google fa-4x text-danger mb-3"></i>
-                        <h4>Search & Display</h4>
-                        <p>Google Ads, YouTube, and display networks to capture high-intent customers.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fas fa-tv fa-4x text-success mb-3"></i>
-                        <h4>CTV/OTT</h4>
-                        <p>Connected TV and streaming platform advertising to reach cord-cutters.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-4">
-            <a href="{% url 'services' %}" class="btn btn-primary btn-lg">View All Services</a>
-        </div>
-    </div>
-</section>
-
-<section class="bg-light py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold">Why Choose Us</h2>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-3 text-center">
-                <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
-                <h4>Data-Driven</h4>
-                <p>Every decision backed by real analytics and performance metrics.</p>
-            </div>
-            <div class="col-md-3 text-center">
-                <i class="fas fa-users fa-3x text-primary mb-3"></i>
-                <h4>Expert Team</h4>
-                <p>Certified professionals across all major advertising platforms.</p>
-            </div>
-            <div class="col-md-3 text-center">
-                <i class="fas fa-sync fa-3x text-primary mb-3"></i>
-                <h4>Transparent</h4>
-                <p>Regular reporting and full campaign visibility at all times.</p>
-            </div>
-            <div class="col-md-3 text-center">
-                <i class="fas fa-rocket fa-3x text-primary mb-3"></i>
-                <h4>Results-Focused</h4>
-                <p>ROI is our priority. Your success is our success.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-{% if latest_posts %}
-<section class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 fw-bold">Latest Insights</h2>
-            <p class="lead text-muted">Stay updated with digital marketing trends</p>
-        </div>
-        <div class="row g-4">
-            {% for post in latest_posts %}
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    {% if post.featured_image %}
-                    <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}" style="height: 200px; object-fit: cover;">
-                    {% else %}
-                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
-                        <i class="fas fa-newspaper fa-4x text-white opacity-50"></i>
-                    </div>
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text">{{ post.excerpt }}</p>
-                        <a href="{{ post.get_absolute_url }}" class="btn btn-outline-primary">Read More</a>
-                    </div>
-                    <div class="card-footer text-muted small">
-                        {{ post.published_at|date:"M d, Y" }}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="text-center mt-4">
-            <a href="{% url 'blog:post_list' %}" class="btn btn-outline-primary">View All Posts</a>
-        </div>
-    </div>
-</section>
-{% endif %}
-
-<section class="text-white py-5" style="background-color: #1b4557;">
-    <div class="container text-center">
-        <h2 class="display-5 fw-bold mb-4">Spending Too Much Time on Ad Management?</h2>
-        <p class="lead mb-4">See how much easier advertising can be.</p>
-        <a href="{% url 'contact:contact' %}" class="btn btn-light btn-lg">Contact Us Today</a>
-    </div>
-</section>
 {% endblock %}
 
 {% block extra_js %}
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
 <script>
     window.addEventListener('load', function() {
+        console.log("Page loaded. Script running...");
+
         const startAnimation = () => {
             const container = document.getElementById('lottie-container');
             const poster = document.getElementById('hero-poster');
 
-            if (!container || !poster) return;
+            if (!container || !poster) {
+                console.error("Lottie container or poster not found!");
+                return;
+            }
 
+            // Create the player element
             const player = document.createElement('lottie-player');
             
-            // WARNING: I kept this as 'animations'. 
-            // If the JSON is also in 'images', change this to 'images/hero-animation.json'
-            player.setAttribute('src', "{% static 'animations/hero-animation.json' %}");
+            // POINT TO YOUR JSON FILE
+            // Ensure this file actually exists at static/images/hero-animation.json
+            player.setAttribute('src', "{% static 'images/hero-animation.json' %}");
             
             player.setAttribute('background', 'transparent');
             player.setAttribute('speed', '1');
             player.setAttribute('loop', '');
             player.setAttribute('autoplay', '');
-            player.setAttribute('class', 'hero-lottie');
             
+            // Styling
             player.style.width = '100%';
             player.style.maxWidth = '500px';
             player.style.margin = '0 auto';
             player.style.display = 'block';
 
+            // Append to DOM
             container.appendChild(player);
 
-            // Hide poster once the animation actually starts playing
+            // 1. Success Listener: Hides poster when animation plays
             player.addEventListener('play', () => {
-                poster.style.display = 'none';
+                console.log("Animation started! Hiding poster...");
+                poster.style.transition = "opacity 0.3s ease";
+                poster.style.opacity = '0';
+                
+                // Remove poster from layout after fade
+                setTimeout(() => { 
+                    poster.style.display = 'none'; 
+                }, 300);
+            });
+
+            // 2. Error Listener: Logs if the JSON is missing
+            player.addEventListener('error', (e) => {
+                console.error("Lottie Error: Failed to load animation JSON.");
+                // We keep the poster visible so the user sees something
             });
         };
 
+        // Use requestIdleCallback to prioritize LCP (the poster)
         if ('requestIdleCallback' in window) {
             requestIdleCallback(startAnimation);
         } else {
-            startAnimation();
+            // Fallback for Safari/Older browsers
+            setTimeout(startAnimation, 100);
         }
     });
 </script>
