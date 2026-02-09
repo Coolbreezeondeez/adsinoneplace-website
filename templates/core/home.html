@@ -56,23 +56,60 @@
             </div>
             
             <div class="col-lg-6 col-12 order-1 order-lg-2 mb-4 mb-lg-0">
-                <div class="text-center">
-                    <lottie-player 
-                        class="hero-lottie"
-                        src="{% static 'animations/hero-animation.json' %}" 
-                        background="transparent" 
-                        speed="1" 
-                        fetchpriority="high"
-                        crossorigin="anonymous"
-                        style="width: 100%; max-width: 500px; aspect-ratio: 1 / 1; margin: 0 auto; display: block;" 
-                        loop 
-                        autoplay>
-                    </lottie-player>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                <div class="text-center" style="position: relative; min-height: 300px;">
+    <img 
+        id="hero-poster"
+        src="{% static 'animations/hero-poster.webp' %}" 
+        alt="Digital Advertising Animation"
+        width="500" 
+        height="500"
+        fetchpriority="high"
+        style="width: 100%; max-width: 500px; height: auto; display: block; margin: 0 auto;"
+    >
+
+    <div id="lottie-container"></div>
+</div>
+
+<script>
+    window.addEventListener('load', function() {
+        // We use requestIdleCallback to ensure we don't freeze the scrolling 
+        // while the JSON parses.
+        const startAnimation = () => {
+            const container = document.getElementById('lottie-container');
+            const poster = document.getElementById('hero-poster');
+
+            // Create the player element programmatically
+            const player = document.createElement('lottie-player');
+            player.setAttribute('src', "{% static 'animations/hero-animation.json' %}");
+            player.setAttribute('background', 'transparent');
+            player.setAttribute('speed', '1');
+            player.setAttribute('loop', '');
+            player.setAttribute('autoplay', '');
+            player.setAttribute('class', 'hero-lottie');
+            
+            // Match your original styling
+            player.style.width = '100%';
+            player.style.maxWidth = '500px';
+            player.style.margin = '0 auto';
+            player.style.display = 'block';
+
+            // Swap Logic: Append player, then hide poster once it plays
+            container.appendChild(player);
+
+            // Listen for the first frame to hide the poster smoothly
+            player.addEventListener('play', () => {
+                poster.style.display = 'none';
+            });
+        };
+
+        // Check if browser supports requestIdleCallback, otherwise run immediately
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(startAnimation);
+        } else {
+            startAnimation();
+        }
+    });
+</script>
 
 <section class="py-5">
     <div class="container">
