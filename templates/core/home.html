@@ -73,45 +73,6 @@
     </div>
 </section>
 
-<script>
-    window.addEventListener('load', function() {
-        const startAnimation = () => {
-            const container = document.getElementById('lottie-container');
-            const poster = document.getElementById('hero-poster');
-
-            // Create the player element programmatically
-            const player = document.createElement('lottie-player');
-            // Ensure this static path is correct in your Django project
-            player.setAttribute('src', "{% static 'animations/hero-animation.json' %}");
-            player.setAttribute('background', 'transparent');
-            player.setAttribute('speed', '1');
-            player.setAttribute('loop', '');
-            player.setAttribute('autoplay', '');
-            player.setAttribute('class', 'hero-lottie');
-            
-            // Match styling
-            player.style.width = '100%';
-            player.style.maxWidth = '500px';
-            player.style.margin = '0 auto';
-            player.style.display = 'block';
-
-            // Append player
-            container.appendChild(player);
-
-            // Hide poster once the animation actually starts playing
-            player.addEventListener('play', () => {
-                poster.style.display = 'none';
-            });
-        };
-
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(startAnimation);
-        } else {
-            startAnimation();
-        }
-    });
-</script>
-
 <section class="py-5">
     <div class="container">
         <div class="text-center mb-5">
@@ -227,5 +188,49 @@
         <a href="{% url 'contact:contact' %}" class="btn btn-light btn-lg">Contact Us Today</a>
     </div>
 </section>
+{% endblock %}
 
+{% block extra_js %}
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<script>
+    window.addEventListener('load', function() {
+        const startAnimation = () => {
+            const container = document.getElementById('lottie-container');
+            const poster = document.getElementById('hero-poster');
+
+            if (!container || !poster) return;
+
+            // Create the player element programmatically
+            const player = document.createElement('lottie-player');
+            // Ensure this static path is correct in your Django project
+            player.setAttribute('src', "{% static 'animations/hero-animation.json' %}");
+            player.setAttribute('background', 'transparent');
+            player.setAttribute('speed', '1');
+            player.setAttribute('loop', '');
+            player.setAttribute('autoplay', '');
+            player.setAttribute('class', 'hero-lottie');
+            
+            // Match styling
+            player.style.width = '100%';
+            player.style.maxWidth = '500px';
+            player.style.margin = '0 auto';
+            player.style.display = 'block';
+
+            // Append player
+            container.appendChild(player);
+
+            // Hide poster once the animation actually starts playing
+            player.addEventListener('play', () => {
+                poster.style.display = 'none';
+            });
+        };
+
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(startAnimation);
+        } else {
+            startAnimation();
+        }
+    });
+</script>
 {% endblock %}
