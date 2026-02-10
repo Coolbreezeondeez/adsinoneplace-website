@@ -26,8 +26,7 @@
         border-color: #fff;
         color: #fff;
     }
-    
-    /* Ensure the poster covers the area perfectly */
+    /* Fade transition for the poster */
     #hero-poster {
         transition: opacity 0.3s ease;
     }
@@ -45,10 +44,10 @@
                 <p class="mb-4">From Facebook to TikTok, Google to CTV, Streaming Audio to Email. Keep the pace, Ads In One Place.</p>
                 
                 <div class="d-flex flex-wrap gap-3">
-                    <a href="{% url 'contact:contact' %}" class="btn btn-primary-glow btn-lg px-4 py-3">
+                    <a href="#" class="btn btn-primary-glow btn-lg px-4 py-3">
                         Scale Your Brand <i class="fas fa-arrow-right ms-2"></i>
                     </a>
-                    <a href="{% url 'services' %}" class="btn btn-outline-soft btn-lg px-4 py-3">
+                    <a href="#" class="btn btn-outline-soft btn-lg px-4 py-3">
                         See How We Work
                     </a>
                 </div>
@@ -94,9 +93,12 @@
             // Create the player element
             const player = document.createElement('lottie-player');
             
-            // POINT TO YOUR JSON FILE
-            // Ensure this file actually exists at static/images/hero-animation.json
-            player.setAttribute('src', "{% static 'images/hero-animation.json' %}");
+            // --- CRITICAL FIX ---
+            // We use a direct string instead of {% static %}. 
+            // This prevents the Server 500 Error if the file is missing.
+            // If the animation doesn't load, check the browser console (F12) for a 404.
+            const jsonPath = "/static/images/hero-animation.json"; 
+            player.setAttribute('src', jsonPath);
             
             player.setAttribute('background', 'transparent');
             player.setAttribute('speed', '1');
@@ -112,30 +114,23 @@
             // Append to DOM
             container.appendChild(player);
 
-            // 1. Success Listener: Hides poster when animation plays
+            // 1. Success Listener: Hides poster ONLY when animation actually plays
             player.addEventListener('play', () => {
                 console.log("Animation started! Hiding poster...");
-                poster.style.transition = "opacity 0.3s ease";
                 poster.style.opacity = '0';
-                
-                // Remove poster from layout after fade
-                setTimeout(() => { 
-                    poster.style.display = 'none'; 
-                }, 300);
+                setTimeout(() => { poster.style.display = 'none'; }, 300);
             });
 
-            // 2. Error Listener: Logs if the JSON is missing
+            // 2. Error Listener: If JSON is wrong, keep poster visible
             player.addEventListener('error', (e) => {
-                console.error("Lottie Error: Failed to load animation JSON.");
-                // We keep the poster visible so the user sees something
+                console.error("Lottie Error: Could not load JSON at " + jsonPath);
+                // We do NOT hide the poster so the user still sees the image
             });
         };
 
-        // Use requestIdleCallback to prioritize LCP (the poster)
         if ('requestIdleCallback' in window) {
             requestIdleCallback(startAnimation);
         } else {
-            // Fallback for Safari/Older browsers
             setTimeout(startAnimation, 100);
         }
     });
