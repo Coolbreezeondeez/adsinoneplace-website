@@ -92,10 +92,12 @@
 
             const player = document.createElement('lottie-player');
             
-            // --- CORRECTED & PRODUCTION SAFE ---
-            // using the static tag ensures this works even if Django adds 
-            // hash numbers to filenames in production.
-            const jsonPath = "{% static 'animations/images/hero-animation.json' %}"; 
+            // --- SAFE MODE FIX ---
+            // We removed the {% static %} tag.
+            // This prevents the Server 500 Error.
+            // If the path is wrong, the browser Console (F12) will show a 404 error, 
+            // but the site WILL LOAD.
+            const jsonPath = "/static/animations/images/hero-animation.json"; 
             
             player.setAttribute('src', jsonPath);
             player.setAttribute('background', 'transparent');
@@ -122,6 +124,7 @@
             // 2. Error Listener
             player.addEventListener('error', (e) => {
                 console.error("Lottie Error: Could not load JSON at " + jsonPath);
+                console.error("Please check your static folder structure.");
             });
         };
 
