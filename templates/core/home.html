@@ -90,16 +90,14 @@
                 return;
             }
 
-            // Create the player element
             const player = document.createElement('lottie-player');
             
-            // --- CRITICAL FIX ---
-            // We use a direct string instead of {% static %}. 
-            // This prevents the Server 500 Error if the file is missing.
-            // If the animation doesn't load, check the browser console (F12) for a 404.
-            const jsonPath = "/static/animations/images/hero-animation.json"; 
-            player.setAttribute('src', jsonPath);
+            // --- CORRECTED & PRODUCTION SAFE ---
+            // using the static tag ensures this works even if Django adds 
+            // hash numbers to filenames in production.
+            const jsonPath = "{% static 'animations/images/hero-animation.json' %}"; 
             
+            player.setAttribute('src', jsonPath);
             player.setAttribute('background', 'transparent');
             player.setAttribute('speed', '1');
             player.setAttribute('loop', '');
@@ -114,17 +112,16 @@
             // Append to DOM
             container.appendChild(player);
 
-            // 1. Success Listener: Hides poster ONLY when animation actually plays
+            // 1. Success Listener
             player.addEventListener('play', () => {
-                console.log("Animation started! Hiding poster...");
+                console.log("Animation playing! Hiding poster.");
                 poster.style.opacity = '0';
                 setTimeout(() => { poster.style.display = 'none'; }, 300);
             });
 
-            // 2. Error Listener: If JSON is wrong, keep poster visible
+            // 2. Error Listener
             player.addEventListener('error', (e) => {
                 console.error("Lottie Error: Could not load JSON at " + jsonPath);
-                // We do NOT hide the poster so the user still sees the image
             });
         };
 
