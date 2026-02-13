@@ -3,7 +3,7 @@
 
 {% block extra_css %}
 <style>
-    /* ... (Your existing styles) ... */
+    /* ... (Keep your existing styles) ... */
     .btn-primary-glow { background-color: #fff; color: #1b4557; font-weight: 700; border: none; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4); transition: transform 0.2s ease, box-shadow 0.2s ease; }
     .btn-primary-glow:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.6); color: #1b4557; }
     .btn-outline-soft { border: 2px solid rgba(255, 255, 255, 0.5); color: #fff; font-weight: 600; }
@@ -23,10 +23,10 @@
                 <p class="mb-4">From Facebook to TikTok, Google to CTV, Streaming Audio to Email. Keep the pace, Ads In One Place.</p>
                 
                 <div class="d-flex flex-wrap gap-3">
-                    <a href="#" class="btn btn-primary-glow btn-lg px-4 py-3">
+                    <a href="{% url 'contact:contact' %}" class="btn btn-primary-glow btn-lg px-4 py-3">
                         Scale Your Brand <i class="fas fa-arrow-right ms-2"></i>
                     </a>
-                    <a href="#" class="btn btn-outline-soft btn-lg px-4 py-3">
+                    <a href="{% url 'services' %}" class="btn btn-outline-soft btn-lg px-4 py-3">
                         See How We Work
                     </a>
                 </div>
@@ -37,7 +37,7 @@
                     
                     <img 
                         id="hero-poster"
-                        src="/static/images/hero-poster.webp" 
+                        src="{% static 'images/hero-poster.webp' %}" 
                         alt="Digital Advertising Animation"
                         width="500" 
                         height="500"
@@ -52,12 +52,13 @@
         </div>
     </div>
 </section>
+
 {% endblock %}
 
 {% block extra_js %}
 <script>
     window.addEventListener('load', function() {
-        console.log("Hybrid Mode Loaded.");
+        console.log("Final Production Script Running...");
 
         const startAnimation = () => {
             const container = document.getElementById('lottie-container');
@@ -67,7 +68,7 @@
 
             const player = document.createElement('lottie-player');
             
-            // WE KNOW THIS WORKS: Your logs proved this file exists.
+            // USE THE VERIFIED PATH
             const jsonPath = "{% static 'animations/hero-animation.json' %}";
             
             player.setAttribute('src', jsonPath);
@@ -75,9 +76,8 @@
             player.setAttribute('speed', '1');
             player.setAttribute('loop', '');
             player.setAttribute('autoplay', '');
-            player.setAttribute('class', 'hero-lottie');
             
-            // Styling
+            // CSS to match your layout
             player.style.width = '100%';
             player.style.maxWidth = '500px';
             player.style.margin = '0 auto';
@@ -85,6 +85,7 @@
 
             container.appendChild(player);
 
+            // Hide poster smoothly ONLY when the animation is actually playing
             player.addEventListener('play', () => {
                 console.log("Animation playing! Hiding poster.");
                 poster.style.opacity = '0';
